@@ -1,0 +1,52 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{title}}</title>
+    <style>
+      .application { border: 1px solid #ccc; border-radius: 5px; padding: 10px;
+      margin-bottom: 10px; } .imageContainer { margin-bottom: 10px; }
+      .imageContainer img { max-width: 100px; max-height: 100px; } button {
+      margin-right: 5px; }
+    </style>
+  </head>
+  <body>
+
+{{#if changeStatus}}
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <strong>{{changeStatus}}</strong> 
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{{/if}}
+<div class="appliedJobs">
+    <h1>{{title}}</h1>
+    {{#if applictions.length}}
+      {{#each applictions}}
+        <div class="application">
+          <div class="imageContainer">
+            <img src="/static/image/{{this.image}}" alt="No Image" />
+          </div>
+          <p>Name: {{this.name}}</p>
+          <p>Email: {{this.email}}</p>
+          <p>Job Title: {{this.job_title}}</p>
+          <p>Phone: {{this.phone}}</p>
+        </div>
+   
+
+<form action="/backend/company/changeStatus/{{this.id}}" method="POST">
+  <input type="hidden" name="status" value="Accepted"/>
+  <input type="hidden" name="applicationId" value="{{this.id}}" />
+  <button type="submit" class="btn btn-primary">Accept</button>
+</form>
+<form action="/backend/company/changeStatus/{{this.id}}" method="post">
+  <input type="hidden" name="status" value="Rejected" />
+  <input type="hidden" name="applicationId" value="{{this.id}}" />
+  <button type="submit" class="btn btn-primary">Reject</button>
+</form>
+</div>
+   {{/each}}
+{{else}}
+  <p>No applications found.</p>
+{{/if}}
+  </body>
+</html>

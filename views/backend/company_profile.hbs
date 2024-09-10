@@ -1,0 +1,48 @@
+
+
+
+  <style>
+     body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f3f5;
+    padding: 20px;
+  }
+    .company-info {
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+  }
+       .company-info p {
+      margin: 5px 0;
+      font-weight: bold;
+ 
+    }
+
+     .company-info h2 {
+    margin-top: 0;
+    font-size: 24px;
+    font-weight: bold;
+    color: #3175b3;
+  }
+  </style>
+</head>
+<body>
+
+<div class="company-info">
+  {{#if company}}
+  <h2>Company Profile</h2>
+    <div class="company-info">
+      <p>Name: {{company.name}}</p>
+      <p>Email: {{company.email}}</p>
+      <p>Phone: {{company.phone}}</p>
+      <p>Location: {{company.location}}</p>
+    </div>
+  {{else}}
+    <p>No company found</p>
+  {{/if}}
+</div>
+
+</body>
+

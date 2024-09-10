@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Dashboard</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <style>
+    /* Reset CSS */
+    body,
+    h1,
+    h2,
+    h3,
+    p,
+    ul,
+    li {
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Body styles */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f3f5;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* Header styles */
+    header {
+      background-color: #3157b3;
+      color: white;
+      padding: 10px 0;
+      text-align: center;
+    }
+
+    /* Container styles */
+    .container {
+      flex: 1;
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
+
+    /* User card styles */
+    .user-card {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+    }
+
+    .user-card img {
+      max-width: 100px;
+      height: auto;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .user-info {
+      margin-left: 20px;
+    }
+
+    .user-info p {
+      margin: 5px 0;
+      font-weight: bold;
+      color: black;
+    }
+
+    /* Resume container styles */
+    .resume-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      transition: background-color 0.3s;
+
+    }
+
+    .resume-container:hover {
+      background-color: rgb(170, 205, 218);
+    }
+
+    .resume-container label {
+      font-size: 16px;
+      color: black;
+      margin-right: 10px;
+    }
+
+    .resume-container img {
+      max-width: 150px;
+      height: auto;
+      border-radius: 8px;
+      object-fit: cover;
+    }
+
+    /* Button styles */
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      background-color: #3157b3;
+      color: #fff;
+      transition: background-color 0.3s;
+      text-decoration: none;
+    }
+
+    .btn:hover {
+      background-color: #2ad884;
+    }
+
+    /* Logout button styles */
+    .logout {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 20px;
+    }
+
+    .logout-btn {
+      padding: 10px 20px;
+      background-color: #c82333;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .logout-btn:hover {
+      background-color: #fff;
+      color: #c82333;
+    }
+
+    /* Footer styles */
+    footer {
+      background-color: #12486e;
+      color: #fff;
+      padding: 10px 0;
+      text-align: center;
+      margin-top: auto;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>User Dashboard</h1>
+  </header>
+
+  <div class="container animate__animated animate__fadeIn">
+    {{#if user}}
+    <div class="user-card">
+      <img src="/static/image/{{user.image}}" alt="User Image">
+      <div class="user-info">
+        <p>Name: {{user.name}}</p>
+        <p>Email: {{user.email}}</p>
+        <p>Phone: {{user.phone}}</p>
+      </div>
+    </div>
+    <div class="resume-container" onclick="expandResume()">
+      <label for="resume">Resume:</label>
+      <img src="/static/image/{{user.resume}}" alt="Resume">
+    </div>
+    {{else}}
+    <p>No data found</p>
+    {{/if}}
+    <a href="/userDashboard/appliedJobs" class="btn">Applied Jobs</a>
+    
+    <form action="/userDashboard/uploadResume" method="POST" enctype="multipart/form-data">
+      <label for="resume">Upload Resume:</label>
+      <input type="file" name="resume">
+      <button type="submit" class="btn">Upload Resume</button>
+    </form>
+    <form action="/logout" method="GET" class="logout">
+      <button type="submit" class="logout-btn">Logout</button>
+    </form>
+  </div>
+
+ 
+
+  <!-- Expand resume image when clicked -->
+  <script>
+    function expandResume() {
+      var x = document.getElementById("resume");
+
+      if (x.style.width == "180px") {
+        x.style.width = "523px";
+      } else {
+        x.style.width = "180px";
+      }
+    }
+  </script>
+</body>
+
+</html>

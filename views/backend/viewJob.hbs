@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Posted Jobs</title>
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Posted Jobs</h1>
+
+{{#if jobData}}
+
+<table>
+  <tr>
+    <th>Job Title</th>
+    <th>Salary</th>
+    <th>Job Type</th>
+    <th>Location</th>
+    <th>Description</th>
+  </tr>
+  {{#each jobData}}
+  <tr>
+    <td>{{this.job_title}}</td>
+    <td>{{this.salary}}</td>
+    <td>{{this.job_type}}</td>
+    <td>{{this.location}}</td>
+    <td>{{this.description}}</td>
+  </tr>
+  {{/each}}
+</table>
+
+{{else}}
+  <p>No job data found</p>
+{{/if}}
+
+</body>
+</html>

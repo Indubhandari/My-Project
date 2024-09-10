@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company Dashboard</title>
+    
+    <!-- Boxicons CSS -->
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+    
+    <!-- Internal CSS -->
+    <style>
+        /* Reset CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        /* Body styles */
+        body {
+            background-color: #f5f5f5;
+            display: flex;
+        }
+
+        /* Sidebar styles */
+        .sidebar {
+            background-color: #3157b3;
+            color: #fff;
+            width: 250px;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            overflow-y: auto;
+            transition: 0.3s;
+            z-index: 999;
+        }
+        
+        .sidebar.close {
+            width: 250px; /* Keep the sidebar width consistent */
+        }
+        
+        .sidebar header {
+            text-align: center;
+            padding: 20px 0;
+        }
+        
+        .menu-bar {
+            padding: 20px;
+        }
+        
+        .menu-links {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .nav-link {
+            margin-bottom: 15px;
+        }
+        
+        .nav-link a {
+            color: #fff;
+            text-decoration: none;
+            display: block;
+            padding: 10px;
+            transition: 0.3s;
+        }
+        
+        .nav-link a:hover {
+            background-color: #21409a;
+            border-radius: 5px;
+        }
+        
+        .bottom-content {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            width: 100%;
+        }
+
+        /* Main content styles */
+        .home {
+            margin-left: 250px; /* Adjust for sidebar width */
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            width: 100%;
+        }
+
+        .home .text {
+            font-size: 24px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .home p {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .home .recent-activities {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #ccc;
+        }
+
+        .home .recent-activities h2 {
+            font-size: 22px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .home .recent-activities ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .home .recent-activities ul li {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .home .cta {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .home .cta a {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #3157b3;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .home .cta a:hover {
+            background-color: #21409a;
+        }
+
+        .home .contact-form {
+            margin-top: 30px;
+            background-color: #f0f0f0;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .home .contact-form h2 {
+            font-size: 22px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .home .contact-form form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .home .contact-form form input,
+        .home .contact-form form textarea {
+            font-size: 16px;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100%;
+        }
+
+        .home .contact-form form button {
+            padding: 12px 24px;
+            background-color: #3157b3;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .home .contact-form form button:hover {
+            background-color: #21409a;
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar -->
+    <nav class="sidebar">
+        <header>
+            <i class='bx bx-chevron-right toggle'></i>
+        </header>
+        <div class="menu-bar">
+            <div class="menu">
+                <ul class="menu-links">
+                    <li class="nav-link">
+                        <a href="/backend/company/company_profile">
+                            <i class='bx bx-home-alt icon'></i>
+                            <span class="text nav-text">Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="/backend/company/jobPost">
+                            <i class='bx bx-bar-chart-alt icon'></i>  
+                            <span class="text nav-text">Post Job</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="/backend/company/viewJobs">
+                            <i class='bx bx-bell icon'></i>
+                            <span class="text nav-text">View jobs</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="/backend/company/applications">
+                            <i class='bx bx-user icon'></i>
+                            <span class="text nav-text">Applications</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="bottom-content">
+                <li class="">
+                    <a href="/logout">
+                        <i class='bx bx-log-out icon'></i>
+                        <span class="text nav-text">Logout</span>
+                    </a>
+                </li>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <section class="home">
+        <div class="text">Welcome to Your Company Dashboard!</div>
+        <p>Better World Employment Services is dedicated to connecting job seekers with their ideal careers and helping businesses find the perfect candidates.</p>
+
+        <div class="recent-activities">
+            <h2>Recent Activities</h2>
+            <ul>
+                <li>Hosted a successful job fair with over 50 companies participating.</li>
+                <li>Launched a new online portal for job applications and tracking.</li>
+            </ul>
+        </div>
+
+        <div class="cta">
+            <a href="#">Learn More</a>
+        </div>
+        
+        <div class="contact-form">
+            <h2>Contact Us</h2>
+            <form>
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea placeholder="Your Message" rows="4" required></textarea>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- External JavaScript -->
+    <script src="/static/js/company.js"></script>
+</body>
+</html>

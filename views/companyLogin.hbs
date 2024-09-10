@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company Login</title>
+    <link rel="stylesheet" href="/static/css/companyLogin.css" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+              background-image: url('/static/image/login.avif');
+            margin: 0;
+            padding: 0;
+        }
+
+        .wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: white;
+            width: 850px;
+            
+        }
+
+        .form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+           
+            width: 850px;
+        }
+
+        .form header {
+            text-align: center;
+            font-size: 24px;
+            color: black;
+            margin-bottom: 20px;
+            background-color: white;
+        }
+
+        .form input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .form .checkbox label {
+            font-size: 14px;
+            color: red;
+        }
+
+        .form .checkbox input[type="checkbox"] {
+            margin-right: 5px;
+        }
+
+        .form .btn {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .form .btn:hover {
+            background-color: rgb(227, 227, 172);
+        }
+
+        .form a {
+            display: block;
+            text-align: center;
+            margin-top: 10px;
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+<section class="wrapper">
+    <div class="form signup">
+        <header>Signup</header>
+        <form action="/companySignup" method="post">
+            <input type="text" name="name" placeholder="Company Name"  />
+            <input type="email" name="email" placeholder="Email Address"  />
+            <input type="text" name="phone" placeholder="Phone Number"  />
+            <input type="text" name="location" placeholder="Location"  />
+            <input type="password" name="password" placeholder="Password"  />
+            <div class="checkbox">
+                <input type="checkbox" id="signupCheck" />
+                <label for="signupCheck">I accept all terms & conditions</label>
+            </div>
+            <button class="btn btn-secondary">Signup</button>
+        </form>
+    </div>
+
+    <div class="form login">
+        <header>Company Login</header>
+        <form action="/companySignup/companyLogin" method="post">
+            <input type="email" name="email" placeholder="Email address"  />
+            <input type="password" name="password" placeholder="Password"  />
+            <a href="#">Forgot password?</a>
+            <button type="submit", class="btn btn-primary">Login</button>
+        </form>
+    </div>
+</section>
+
+<script>
+    const wrapper = document.querySelector(".wrapper"),
+          signupHeader = document.querySelector(".signup header"),
+          loginHeader = document.querySelector(".login header");
+
+    loginHeader.addEventListener("click", () => {
+        wrapper.classList.add("active");
+    });
+    signupHeader.addEventListener("click", () => {
+        wrapper.classList.remove("active");
+    });
+</script>
+</body> 

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="/static/css/home.css">
+</head>
+<style>
+
+    .about, .services, .jobs, .testimonials, .contact {
+    background: white;
+    padding: 20px;
+    margin: 20px 0;
+    box-shadow: brown;
+}
+
+.about h2, .services h2, .jobs h2, .testimonials h2, .contact h2 {
+    border-bottom: 2px solid #333;
+    padding-bottom: 10px;
+    border-width: 50px;
+    border-color: #3157b3;
+   
+}
+
+.services ul, .jobs ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.services ul li, .jobs ul li {
+    background: white;
+    margin: 10px 0;
+    padding: 10px;
+    border-left: 5px solid #333;
+}
+
+.testimonials .testimonial {
+    margin: 10px 0;
+    padding: 10px;
+    border-left: 5px solid #333;
+    background: white;
+}
+
+
+
+</style>
+
+<body>
+     <div class="container">
+        <div class="image">
+            <img src="/static/image/homeImage.png" alt="Image">
+        </div>
+        <div class="content">
+            <h1 id="typing" class="heading1">Better World Employment Services</h1>
+            <div class="content1">
+            <p> Better World Employment Services offers comprehensive job placement, career counseling, and employee training programs. Our mission is to empower individuals and organizations to achieve their professional goals and create a better world through meaningful employment opportunities..</p>
+            <p> <b> <h3> Get your Dream JOBS here! </h3></b></p> 
+            </div>
+        </div>
+    </div>
+    </div>
+  <center> 
+        <!-- About Us Section -->
+        <div id="about" class="about">
+            <h2>About Us</h2>
+            <p>Better World Employment Services is dedicated to helping individuals find their ideal job opportunities. With years of experience in the industry, we offer top-notch career counseling, job placement assistance, and much more.</p>
+        </div>
+
+        <!-- Services Section -->
+        <div id="services" class="services">
+            <h2>Our Services</h2>
+            <ul>
+                <li>Job Placement Assistance</li>
+                <li>Resume Building</li>
+                <li>Career Counseling</li>
+                <li>Interview Preparation</li>
+            </ul>
+        </div>
+
+        <!-- Latest Job Listings Section -->
+        <div id="jobs" class="jobs">
+            <h2>Latest Job Listings</h2>
+            <ul>
+                <li>Software Engineer - TechCorp</li>
+                <li>Marketing Manager - BizSolutions</li>
+                <li>Data Analyst - DataInsights</li>
+                <li>HR Specialist - PeopleFirst</li>
+            </ul>
+        </div>
+
+        <!-- Testimonials Section -->
+        <div class="testimonials">
+            <h2>Testimonials</h2>
+            <div class="testimonial">
+                <p>"Thanks to Better World Employment Services, I found my dream job in no time!" - Jane Doe</p>
+            </div>
+            <div class="testimonial">
+                <p>"Their resume building and interview preparation services are top-notch!" - John Smith</p>
+            </div>
+        </div>
+
+       </center>
+
+
+    <script>
+        const typingElement = document.getElementById('typing');
+        const typingText = typingElement.textContent;
+        
+        function startTypingAnimation() {
+            typingElement.style.animation = 'none';
+            typingElement.offsetHeight; // Trigger reflow to restart the animation
+            typingElement.style.animation = 'typing 4s steps(40, end), blink-caret .75s step-end infinite';
+        }
+
+        typingElement.addEventListener('animationend', () => {
+            setTimeout(() => {
+                typingElement.textContent = '';
+                setTimeout(() => {
+                    typingElement.textContent = typingText;
+                    startTypingAnimation();
+                }, 500); // Delay before starting the typing animation again
+            }, 1000); // Delay after the animation ends before clearing text
+        });
+
+        startTypingAnimation();
+    </script>
+
+
+</body>
+</html>

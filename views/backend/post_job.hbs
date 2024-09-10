@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<!-- Coding By CodingNepal - codingnepalweb.com -->
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{title}}</title> 
+  {{!-- <link rel="stylesheet" href="/static/css/job.css"> --}}
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-image: url('/static/image/image.jpg'); /* Replace 'background-image.jpg' with the path to your background image */
+      background-size: cover;
+      background-position: center;
+    }
+
+    .wrapper {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: rgba(255, 255, 255, 0.8); /* Adjust the opacity as needed */
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .wrapper h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .input-box {
+      margin-bottom: 20px;
+    }
+
+    .input-box input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .input-box.button input {
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+
+    .input-box.button input:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <h2>Post Job</h2>
+    <form action="/backend/company/jobPost" method="post" enctype="multipart/form-data">
+      <div class="input-box">
+        <input type="text" name="job_title" placeholder="Job Title" >
+      </div>
+      <div class="input-box">
+        <input type="text" name="job_type" placeholder="Job Type" >
+      </div>
+      <div class="input-box">
+        <input type="text" name="location" placeholder="Job Location" >
+      </div>
+      <div class="input-box">
+        <input type="number" name="salary" placeholder="Enter Salary" >
+      </div>
+      <div class="input-box">
+        <input type="text" name="description" placeholder="Job Description" >
+      </div>
+      <div class="input-box">
+        <input type="file" id="file" name="image" accept="image/*">
+      </div>
+      <div class="input-box button">
+        <input type="Submit" value="Post">
+      </div>
+    </form>
+  </div>
+</body>
+</html>
